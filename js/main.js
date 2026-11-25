@@ -3,6 +3,9 @@
 const FOUNDED = new Date(2014, 9, 1);              // 1 October 2014 (months count from 0)
 const QUOTE_TO = 'aaravgarglko@gmail.com';         // quote requests are emailed here automatically
 const QUOTE_FALLBACK = 'info@vpluspackagingrwanda.com';
+// Web3Forms access key (free, from https://web3forms.com – the key is linked to the email above).
+// When set, every quote is sent through Web3Forms AND FormSubmit, so one service failing never loses a quote.
+const WEB3FORMS_KEY = '';
 
 // Years in business = today − 1 October 2014 (full years completed)
 const now = new Date();
@@ -75,14 +78,25 @@ if (form) form.addEventListener('submit', async e => {
   };
 
   btn.disabled = true; btn.textContent = 'Sending…'; show('', true);
-  try {
-    const res = await fetch(`https://formsubmit.co/ajax/${QUOTE_TO}`, {
+  const post = async (url, payload) => {
+    const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data),
+      body: JSON.stringify(payload),
     });
     const out = await res.json().catch(() => ({}));
     if (!res.ok || String(out.success) !== 'true') throw new Error(out.message || res.status);
+    return out;
+  };
+  const sends = [post(`https://formsubmit.co/ajax/${QUOTE_TO}`, data)];
+  if (WEB3FORMS_KEY) {
+    const { _subject, _replyto, _template, ...fields } = data;
+    sends.push(post('https://api.web3forms.com/submit', {
+      access_key: WEB3FORMS_KEY, subject: _subject, from_name: 'V-Plus Website', replyto: _replyto, ...fields,
+    }));
+  }
+  try {
+    await Promise.any(sends);   // success if at least one service accepted it
     form.reset();
     show('Thank you! Your quote request has been sent. Our team will contact you within one business day.', true);
   } catch (err) {
