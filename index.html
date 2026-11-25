@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vplus Packaging Ltd – Corrugated packaging made in Kigali, Rwanda</title>
+<meta name="description" content="Vplus Packaging Ltd manufactures corrugated cartons and printed boxes in the Kigali Special Economic Zone, supplying Rwanda and the East African region." />
+<meta property="og:title" content="Vplus Packaging Ltd – Packaging made in Rwanda" />
+<meta property="og:description" content="Corrugated cartons, printed boxes and custom packaging from the Kigali Special Economic Zone." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --kraft:#c8996b; --kraft-l:#e9d6bf; --kraft-xl:#f6efe6;
+    --ink:#1d2a24; --ink-2:#4b5a52; --green:#1f5a43; --green-d:#123a2b; --leaf:#7fb069;
+    --line:#e3d8ca; --white:#fff; --radius:18px;
+    --shadow:0 18px 40px -18px rgba(29,42,36,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:78px}
+  body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--kraft-xl);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.1;font-weight:700;letter-spacing:-.01em}
+  .wrap{width:min(1200px,92%);margin-inline:auto}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.5rem;border-radius:999px;font-weight:600;font-size:.95rem;transition:transform .2s,background .2s,color .2s;border:2px solid transparent;cursor:pointer}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--green);color:#fff}
+  .btn-primary:hover{background:var(--green-d)}
+  .btn-ghost{border-color:currentColor}
+  .btn .arr{transition:transform .2s}.btn:hover .arr{transform:translateX(4px)}
+  section{padding:110px 0}
+  .sec-head{max-width:720px;margin-bottom:56px}
+  .sec-head h2{font-size:clamp(2rem,4vw,3.1rem);margin:.6rem 0 1rem}
+  .sec-head p{color:var(--ink-2);font-size:1.08rem}
+
+  /* Top bar + header */
+  .topbar{background:var(--green-d);color:#d9e7df;font-size:.82rem}
+  .topbar .wrap{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;flex-wrap:wrap}
+  .topbar span{opacity:.9}
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(246,239,230,.88);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+  header.nav.scrolled{border-color:var(--line);box-shadow:0 6px 20px -14px rgba(0,0,0,.25)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+  .logo{display:flex;align-items:center;gap:.7rem;font-weight:700}
+  .logo-mark{width:44px;height:44px}
+  .logo b{font-family:Fraunces,serif;font-size:1.45rem;color:var(--green-d);line-height:1}
+  .logo small{display:block;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);font-weight:600;margin-top:3px}
+  .menu{display:flex;gap:2rem;align-items:center;list-style:none}
+  .menu a{font-weight:500;font-size:.95rem;position:relative}
+  .menu a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--kraft);transition:width .25s}
+  .menu a:not(.btn):hover::after{width:100%}
+  .burger{display:none;background:none;border:0;cursor:pointer;width:42px;height:42px}
+  .burger span{display:block;height:2px;width:24px;background:var(--ink);margin:5px auto;transition:.3s}
+
+  /* Hero */
+  .hero{padding:70px 0 90px;position:relative;overflow:hidden}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+  .hero h1{font-size:clamp(2.6rem,5.6vw,4.7rem);margin:1rem 0 1.4rem}
+  .hero h1 em{font-style:normal;color:var(--green);position:relative;white-space:nowrap}
+  .hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.08em;height:.22em;background:var(--kraft-l);z-index:-1;border-radius:4px}
+  .hero p.lead{font-size:1.18rem;color:var(--ink-2);max-width:540px;margin-bottom:2rem}
+  .hero .cta{display:flex;gap:1rem;flex-wrap:wrap}
+  .hero-badges{display:flex;gap:1.6rem;margin-top:2.6rem;flex-wrap:wrap;color:var(--ink-2);font-size:.9rem}
+  .hero-badges div{display:flex;align-items:center;gap:.5rem}
+  .hero-badges i{width:9px;height:9px;border-radius:50%;background:var(--leaf);display:inline-block}
+  .hero-art{position:relative;aspect-ratio:1/1;border-radius:32px;background:radial-gradient(circle at 30% 20%,#2a6e54,var(--green-d));box-shadow:var(--shadow);overflow:hidden}
+  .hero-art svg{position:absolute;inset:0;width:100%;height:100%}
+  .float{animation:float 6s ease-in-out infinite}
+  .float.d2{animation-delay:-2s}.float.d3{animation-delay:-4s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  .hero-tag{position:absolute;left:-24px;bottom:40px;background:#fff;border-radius:14px;padding:14px 18px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center;font-size:.88rem}
+  .hero-tag strong{display:block;font-size:1rem}
+  .hero-tag .dot{width:38px;height:38px;border-radius:10px;background:var(--kraft-l);display:grid;place-items:center;font-size:1.2rem}
+
+  /* Strip */
+  .strip{background:var(--green-d);color:#fff;padding:0}
+  .strip .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .strip div.cell{padding:38px 28px;border-left:1px solid rgba(255,255,255,.12)}
+  .strip div.cell:first-child{border-left:0}
+  .strip b{font-family:Fraunces,serif;font-size:2.3rem;display:block;color:var(--kraft-l)}
+  .strip span{font-size:.92rem;opacity:.85}
+
+  /* Products */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .card{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .card .pic{aspect-ratio:16/10;background:var(--kraft-l);display:grid;place-items:center}
+  .card .pic svg{width:58%;height:auto}
+  .card .body{padding:26px 26px 30px;flex:1;display:flex;flex-direction:column}
+  .card h3{font-size:1.35rem;margin-bottom:.6rem}
+  .card p{color:var(--ink-2);font-size:.97rem;flex:1}
+  .card ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+  .card li{font-size:.75rem;font-weight:600;background:var(--kraft-xl);border:1px solid var(--line);padding:4px 10px;border-radius:999px;color:var(--ink-2)}
+
+  /* Feature split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+  .split-visual{border-radius:28px;background:var(--kraft);aspect-ratio:5/4;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .flutes{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:28px;padding:40px}
+  .flute-row{background:#fff;border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:18px;box-shadow:0 10px 24px -16px rgba(0,0,0,.5)}
+  .flute-row svg{width:150px;flex:none}
+  .flute-row b{display:block;font-size:.98rem}
+  .flute-row span{font-size:.82rem;color:var(--ink-2)}
+  .checks{list-style:none;margin:1.8rem 0 2.2rem;display:grid;gap:14px}
+  .checks li{display:flex;gap:14px;align-items:flex-start}
+  .checks li::before{content:"✓";flex:none;width:26px;height:26px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:.8rem;font-weight:700;margin-top:2px}
+
+  /* Industries */
+  .industries{background:#fff}
+  .ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .ind{border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;background:var(--kraft-xl);transition:background .3s,color .3s,transform .3s}
+  .ind:hover{background:var(--green);color:#fff;transform:translateY(-4px)}
+  .ind:hover p{color:#d9e7df}
+  .ind .ic{font-size:2rem;margin-bottom:14px}
+  .ind h3{font-size:1.15rem;margin-bottom:.4rem;font-family:Inter,sans-serif;font-weight:700}
+  .ind p{font-size:.9rem;color:var(--ink-2);transition:color .3s}
+
+  /* Process */
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;counter-reset:s;position:relative}
+  .steps::before{content:"";position:absolute;top:30px;left:8%;right:8%;height:2px;background:repeating-linear-gradient(90deg,var(--kraft) 0 10px,transparent 10px 18px)}
+  .step{text-align:center;position:relative}
+  .step .n{width:62px;height:62px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;margin:0 auto 18px;font-family:Fraunces,serif;font-size:1.4rem;box-shadow:0 0 0 8px var(--kraft-xl)}
+  .step h3{font-family:Inter,sans-serif;font-size:1.05rem;margin-bottom:.35rem}
+  .step p{font-size:.9rem;color:var(--ink-2)}
+
+  /* Sustainability */
+  .green-sec{background:var(--green-d);color:#fff;position:relative;overflow:hidden}
+  .green-sec .eyebrow{color:var(--leaf)}
+  .green-sec .sec-head p{color:#cfe0d6}
+  .sus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .sus{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:32px}
+  .sus .ic{width:52px;height:52px;border-radius:14px;background:var(--leaf);color:var(--green-d);display:grid;place-items:center;font-size:1.5rem;margin-bottom:20px}
+  .sus h3{font-size:1.35rem;margin-bottom:.6rem}
+  .sus p{color:#cfe0d6;font-size:.97rem}
+  .leaf-bg{position:absolute;right:-120px;top:-80px;width:520px;opacity:.07}
+  .quote{margin-top:60px;padding:40px;border-radius:var(--radius);background:var(--kraft);color:var(--ink);display:flex;gap:30px;align-items:center}
+  .quote p{font-family:Fraunces,serif;font-size:clamp(1.3rem,2.4vw,1.8rem);line-height:1.3}
+
+  /* Region */
+  .region .split-visual{background:#fff;border:1px solid var(--line)}
+  .country-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:1.8rem 0}
+  .country-list div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-weight:600;display:flex;gap:10px;align-items:center}
+  .country-list .pin{width:10px;height:10px;border-radius:50%;background:var(--kraft);display:inline-block}
+  .country-list div.home .pin{background:var(--leaf)}
+  .country-list div.home{background:var(--green);color:#fff;border-color:var(--green)}
+
+  /* Contact */
+  .contact{background:#fff}
+  .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px}
+  .info-item{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+  .info-item .ic{flex:none;width:46px;height:46px;border-radius:12px;background:var(--kraft-xl);display:grid;place-items:center;font-size:1.2rem}
+  .info-item b{display:block}
+  .info-item span{color:var(--ink-2);font-size:.95rem}
+  form{background:var(--kraft-xl);border:1px solid var(--line);border-radius:24px;padding:38px}
+  form h3{font-size:1.6rem;margin-bottom:.4rem}
+  form > p{color:var(--ink-2);margin-bottom:1.6rem;font-size:.95rem}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  label{display:block;font-size:.82rem;font-weight:600;margin-bottom:6px}
+  .field{margin-bottom:16px}
+  input,select,textarea{width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:12px;font:inherit;font-size:.95rem;background:#fff;color:var(--ink);transition:border-color .2s,box-shadow .2s}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px rgba(31,90,67,.12)}
+  textarea{min-height:120px;resize:vertical}
+  .form-note{font-size:.8rem;color:var(--ink-2);margin-top:12px}
+
+  /* Footer */
+  footer{background:var(--ink);color:#b9c4be;padding:80px 0 30px;font-size:.93rem}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:60px}
+  footer h4{color:#fff;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
+  footer ul{list-style:none;display:grid;gap:10px}
+  footer a:hover{color:var(--kraft-l)}
+  footer .logo b{color:#fff}
+  footer .logo small{color:#93a39a}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.84rem}
+
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:980px){
+    .hero .wrap,.split,.contact-grid{grid-template-columns:1fr}
+    .hero-art{max-width:520px}
+    .grid-3,.sus-grid{grid-template-columns:1fr 1fr}
+    .ind-grid{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr 1fr;row-gap:40px}.steps::before{display:none}
+    .strip .wrap{grid-template-columns:1fr 1fr}
+    .strip div.cell:nth-child(3){border-left:0}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .menu{position:fixed;inset:78px 0 auto 0;flex-direction:column;background:var(--kraft-xl);padding:30px;gap:1.4rem;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .35s;box-shadow:var(--shadow)}
+    .menu.open{transform:none}
+    .burger{display:block}
+    .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .burger.open span:nth-child(2){opacity:0}
+    .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  }
+  @media (max-width:620px){
+    section{padding:80px 0}
+    .grid-3,.sus-grid,.ind-grid,.row,.country-list,.foot-grid{grid-template-columns:1fr}
+    .hero-tag{left:12px}
+    .quote{flex-direction:column;align-items:flex-start}
+    .topbar .hide-sm{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- ======================================================================
+     EDIT ME: anything marked [CONFIRM] below is a placeholder (phone,
+     address details, numbers). Replace with your real company details.
+     ====================================================================== -->
+
+<div class="topbar">
+  <div class="wrap">
+    <span>📍 Kigali Special Economic Zone, Gasabo, Kigali – Rwanda</span>
+    <span class="hide-sm">✉ info@vpluspackagingrwanda.com &nbsp;·&nbsp; ☎ +250 7XX XXX XXX <!-- [CONFIRM] --></span>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Vplus Packaging home">
+      <svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M24 4 42 13v22L24 44 6 35V13Z" fill="#1f5a43"/>
+        <path d="M24 4 42 13 24 22 6 13Z" fill="#c8996b"/>
+        <path d="M15 24l9 13 9-13" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M35 21v6M32 24h6" stroke="#e9d6bf" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+      <span><b>Vplus</b><small>Packaging Ltd</small></span>
+    </a>
+    <ul class="menu" id="menu">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#process">How we work</a></li>
+      <li><a href="#sustainability">Sustainability</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="btn btn-primary">Get a quote <span class="arr">→</span></a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Made in Rwanda · Corrugated packaging</span>
+      <h1>Packaging that <em>protects</em> what Rwanda makes.</h1>
+      <p class="lead">Vplus Packaging Ltd manufactures strong, printed corrugated cartons in the Kigali Special Economic Zone – built to carry your products safely from the factory floor to shelves across East Africa.</p>
+      <div class="cta">
+        <a href="#contact" class="btn btn-primary">Request a quote <span class="arr">→</span></a>
+        <a href="#products" class="btn btn-ghost">Explore products</a>
+      </div>
+      <div class="hero-badges">
+        <div><i></i>Custom sizes &amp; printing</div>
+        <div><i></i>Recyclable paper-based</div>
+        <div><i></i>Local, fast delivery</div>
+      </div>
+    </div>
+
+    <div class="hero-art reveal" aria-hidden="true">
+      <svg viewBox="0 0 500 500">
+        <defs>
+          <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="rgba(255,255,255,.12)"/></pattern>
+        </defs>
+        <rect width="500" height="500" fill="url(#dots)"/>
+        <!-- big box -->
+        <g class="float">
+          <path d="M250 150 380 210v140l-130 60-130-60V210Z" fill="#b7865a"/>
+          <path d="M250 150 380 210 250 270 120 210Z" fill="#d9ad80"/>
+          <path d="M250 270v140l130-60V210Z" fill="#a37549"/>
+          <path d="M185 180l130 60" stroke="#c4935f" stroke-width="18"/>
+          <path d="M250 270v140" stroke="#8f643d" stroke-width="1.5"/>
+          <g transform="translate(140 285) skewY(25)" fill="#1f5a43" opacity=".9">
+            <rect x="0" y="0" width="80" height="34" rx="5"/>
+          </g>
+          <text x="152" y="322" transform="rotate(25 152 322)" fill="#fff" font-family="Fraunces,serif" font-weight="700" font-size="18">Vplus</text>
+          <g stroke="#5a3d22" stroke-width="2.5" fill="none" transform="translate(300 300) skewY(-25)">
+            <path d="M0 10l8-10 8 10M8 0v22"/><path d="M26 10l8-10 8 10M34 0v22"/>
+          </g>
+        </g>
+        <!-- small box -->
+        <g class="float d2">
+          <path d="M395 70 455 98v62l-60 28-60-28V98Z" fill="#c99868"/>
+          <path d="M395 70 455 98 395 126 335 98Z" fill="#e6c49e"/>
+          <path d="M395 126v62l60-28V98Z" fill="#ad7e51"/>
+        </g>
+        <!-- tray -->
+        <g class="float d3">
+          <path d="M80 385 150 415v26l-70 30-70-30v-26Z" fill="#c99868"/>
+          <path d="M80 385 150 415 80 445 10 415Z" fill="#8f643d"/>
+          <path d="M80 445v26l70-30v-26Z" fill="#ad7e51"/>
+          <path d="M80 445v26L10 441v-26Z" fill="#c99868"/>
+        </g>
+        <!-- leaves -->
+        <g fill="#7fb069" opacity=".9">
+          <path d="M70 120c40-40 90-30 90-30s-5 55-55 70c-20 6-35-40-35-40z"/>
+          <path d="M60 150c0-30 30-50 30-50" stroke="#123a2b" stroke-width="2" fill="none"/>
+        </g>
+      </svg>
+      <div class="hero-tag"><div class="dot">♻️</div><div><strong>100% paper-based</strong>Plastic-free by design</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<section class="strip">
+  <div class="wrap">
+    <div class="cell"><b>3 · 5 · 7</b><span>Ply board for light to heavy-duty loads</span></div>
+    <div class="cell"><b>B · C · E</b><span>Flute profiles for strength &amp; print</span></div>
+    <div class="cell"><b>Up to 4</b><span>Print colours on your cartons <!-- [CONFIRM] --></span></div>
+    <div class="cell"><b>KSEZ</b><span>Factory in Kigali Special Economic Zone</span></div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Our products</span>
+      <h2>Corrugated packaging, made to your measure.</h2>
+      <p>From standard shipping cartons to fully printed retail boxes, every Vplus box is designed around your product, your supply chain and your brand.</p>
+    </div>
+    <div class="grid-3">
+      <article class="card reveal">
+        <div class="pic"><svg viewBox="0 0 120 100"><path d="M60 10 105 30v45L60 95 15 75V30Z" fill="#b7865a"/><path d="M60 10 105 30 60 50 15 30Z" fill="#d9ad80"/><path d="M60 50v45l45-20V30Z" fill="#a37549"/><path d="M37 20l45 20" stroke="#c4935f" stroke-width="7"/></svg></div>
+        <div class="body"><h3>Regular slotted cartons</h3><p>The workhorse of shipping. Strong, stackable RSC boxes for beverages, food, consumer goods and exports.</p><ul><li>3 / 5 / 7 ply</li><li>Any size</li><li>Bulk orders</li></ul></div>
+      </article>
+      <article class="card reveal">
+        <div class="pic"><svg viewBox="0 0 120 100"><path d="M60 10 105 30v45L60 95 15 75V30Z" fill="#fff"/><path d="M60 10 105 30 60 50 15 30Z" fill="#f0e3d2"/><path d="M60 50v45l45-20V30Z" fill="#e3d0b8"/><rect x="22" y="52" width="30" height="12" rx="3" transform="skewY(24)" fill="#1f5a43"/><circle cx="82" cy="62" r="7" fill="#c8996b"/></svg></div>
+        <div class="body"><h3>Printed &amp; branded boxes</h3><p>Turn every carton into a billboard. Sharp flexographic printing of your logo, product info and barcodes.</p><ul><li>Multi-colour print</li><li>Barcodes</li><li>Retail-ready</li></ul></div>
+      </article>
+      <article class="card reveal">
+        <div class="pic"><svg viewBox="0 0 120 100"><path d="M60 30 108 50v18L60 88 12 68V50Z" fill="#c99868"/><path d="M60 30 108 50 60 70 12 50Z" fill="#8f643d"/><path d="M60 70v18l48-20V50Z" fill="#ad7e51"/><path d="M36 40l48 20M84 40 36 60" stroke="#e6c49e" stroke-width="2"/></svg></div>
+        <div class="body"><h3>Die-cut boxes &amp; trays</h3><p>Precision die-cut trays, mailer boxes and shelf-ready packs with locking tabs and display windows.</p><ul><li>Mailers</li><li>Fruit &amp; egg trays</li><li>Display packs</li></ul></div>
+      </article>
+      <article class="card reveal">
+        <div class="pic"><svg viewBox="0 0 120 100"><path d="M60 10 105 30v45L60 95 15 75V30Z" fill="#b7865a" opacity=".35"/><g stroke="#8f643d" stroke-width="3" fill="none"><path d="M30 37v40M45 43v40M60 50v45M75 43v40M90 37v40"/><path d="M15 52l45 20 45-20"/></g></svg></div>
+        <div class="body"><h3>Partitions &amp; inserts</h3><p>Cell dividers and fitments that keep bottles, jars and fragile items separated and safe in transit.</p><ul><li>Bottle dividers</li><li>Pads &amp; liners</li><li>Custom fit</li></ul></div>
+      </article>
+      <article class="card reveal">
+        <div class="pic"><svg viewBox="0 0 120 100"><path d="M60 5 110 27v52L60 98 10 79V27Z" fill="#a37549"/><path d="M60 5 110 27 60 49 10 27Z" fill="#c4935f"/><path d="M60 49v49l50-19V27Z" fill="#8f643d"/><path d="M10 50l50 22 50-22" stroke="#5a3d22" stroke-width="3" fill="none"/></svg></div>
+        <div class="body"><h3>Heavy-duty cartons</h3><p>Double and triple wall board for industrial parts, agricultural produce and long-distance regional transport.</p><ul><li>5 &amp; 7 ply</li><li>High stacking</li><li>Export grade</li></ul></div>
+      </article>
+      <article class="card reveal">
+        <div class="pic"><svg viewBox="0 0 120 100"><rect x="20" y="20" width="80" height="60" rx="4" fill="#d9ad80"/><path d="M20 35h80M20 50h80M20 65h80" stroke="#b7865a" stroke-width="2"/><path d="M20 35q10-8 20 0t20 0 20 0 20 0" stroke="#8f643d" stroke-width="2" fill="none"/></svg></div>
+        <div class="body"><h3>Corrugated sheets &amp; rolls</h3><p>Board sheets for converters, protective wrapping and in-house packing lines, cut to your specification.</p><ul><li>Single-face rolls</li><li>Cut sheets</li><li>Protective wrap</li></ul></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTH SPLIT -->
+<section style="padding-top:0">
+  <div class="wrap split">
+    <div class="split-visual reveal" aria-hidden="true">
+      <div class="flutes">
+        <div class="flute-row"><svg viewBox="0 0 150 30"><path d="M0 3h150M0 27h150" stroke="#8f643d" stroke-width="3"/><path d="M0 27q6-24 12 0t12 0 12 0 12 0 12 0 12 0 12 0 12 0 12 0 12 0 12 0 12 0 6 0" stroke="#b7865a" stroke-width="2" fill="none"/></svg><div><b>3 ply · single wall</b><span>Light goods, retail &amp; food</span></div></div>
+        <div class="flute-row"><svg viewBox="0 0 150 30"><path d="M0 2h150M0 15h150M0 28h150" stroke="#8f643d" stroke-width="2.5"/><path d="M0 15q5-13 10 0t10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0M0 28q5-13 10 0t10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0" stroke="#b7865a" stroke-width="1.8" fill="none"/></svg><div><b>5 ply · double wall</b><span>Beverages, bulk &amp; distribution</span></div></div>
+        <div class="flute-row"><svg viewBox="0 0 150 30"><path d="M0 1h150M0 10.5h150M0 20h150M0 29h150" stroke="#8f643d" stroke-width="2"/><path d="M0 10q4-9 8 0t8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0M0 20q4-9 8 0t8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0M0 29q4-9 8 0t8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0 8 0" stroke="#b7865a" stroke-width="1.5" fill="none"/></svg><div><b>7 ply · triple wall</b><span>Heavy, industrial &amp; export</span></div></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Built for strength</span>
+      <h2 style="font-size:clamp(2rem,4vw,3rem);margin:.6rem 0 1rem">The right board for every load.</h2>
+      <p style="color:var(--ink-2);font-size:1.06rem">Our team helps you choose the board grade, flute and construction that gives the best protection for the lowest cost – so you never over-pay for packaging or lose products to damage.</p>
+      <ul class="checks">
+        <li><span><b>Engineered for East African roads</b> – cartons that survive long hauls, humidity and repeated handling.</span></li>
+        <li><span><b>Consistent quality</b> – board strength and print checked batch by batch before dispatch.</span></li>
+        <li><span><b>Samples before production</b> – approve a physical sample before we run your order.</span></li>
+      </ul>
+      <a href="#contact" class="btn btn-primary">Talk to our packaging team <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries" class="industries">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Industries we serve</span>
+      <h2>Trusted by the businesses that move Rwanda.</h2>
+      <p>We supply manufacturers, farmers, exporters and retailers with packaging designed for their products.</p>
+    </div>
+    <div class="ind-grid">
+      <div class="ind reveal"><div class="ic">🥤</div><h3>Beverages</h3><p>Cartons and dividers for bottled water, juices, beer and soft drinks.</p></div>
+      <div class="ind reveal"><div class="ic">☕</div><h3>Coffee &amp; tea</h3><p>Export-ready cartons for Rwanda's world-class coffee and tea.</p></div>
+      <div class="ind reveal"><div class="ic">🥑</div><h3>Agriculture</h3><p>Ventilated boxes and trays for fruit, vegetables, flowers and eggs.</p></div>
+      <div class="ind reveal"><div class="ic">🍞</div><h3>Food processing</h3><p>Food-safe outer packaging for flour, dairy, bakery and snacks.</p></div>
+      <div class="ind reveal"><div class="ic">💊</div><h3>Pharma &amp; health</h3><p>Clean, clearly printed shipper cartons for medicines and supplies.</p></div>
+      <div class="ind reveal"><div class="ic">🧴</div><h3>FMCG &amp; cosmetics</h3><p>Branded boxes for soaps, detergents and personal care.</p></div>
+      <div class="ind reveal"><div class="ic">📦</div><h3>E-commerce &amp; retail</h3><p>Mailer boxes and shipping cartons for online sellers and shops.</p></div>
+      <div class="ind reveal"><div class="ic">🏭</div><h3>Industrial</h3><p>Heavy-duty packs for hardware, parts and construction materials.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">How we work</span>
+      <h2>From idea to delivered pallet.</h2>
+      <p>A simple, transparent process – with one team looking after your order from the first brief to the final delivery.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><h3>Brief</h3><p>Tell us your product, size, weight and quantity.</p></div>
+      <div class="step reveal"><div class="n">2</div><h3>Design</h3><p>We recommend the board and prepare your artwork.</p></div>
+      <div class="step reveal"><div class="n">3</div><h3>Sample</h3><p>You approve a physical sample before production.</p></div>
+      <div class="step reveal"><div class="n">4</div><h3>Produce</h3><p>Corrugating, printing, die-cutting and quality checks.</p></div>
+      <div class="step reveal"><div class="n">5</div><h3>Deliver</h3><p>On-time delivery to your door in Rwanda and the region.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SUSTAINABILITY -->
+<section id="sustainability" class="green-sec">
+  <svg class="leaf-bg" viewBox="0 0 200 200" aria-hidden="true"><path d="M20 180C20 80 80 20 180 20c0 100-60 160-160 160Z" fill="#fff"/></svg>
+  <div class="wrap" style="position:relative">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Sustainability</span>
+      <h2>Paper-based packaging for a plastic-free Rwanda.</h2>
+      <p>Rwanda is a global leader in banning single-use plastics. Corrugated board is renewable, recyclable and biodegradable – we are proud to help businesses package responsibly.</p>
+    </div>
+    <div class="sus-grid">
+      <div class="sus reveal"><div class="ic">🌱</div><h3>Renewable material</h3><p>Corrugated board is made from wood fibre – a renewable resource – and recycled paper.</p></div>
+      <div class="sus reveal"><div class="ic">♻️</div><h3>Fully recyclable</h3><p>Our cartons can be collected and recycled into new paper and board, keeping fibre in use.</p></div>
+      <div class="sus reveal"><div class="ic">📉</div><h3>Right-sized design</h3><p>We design boxes that use only the board you need – less waste, lower cost, lighter loads.</p></div>
+    </div>
+    <div class="quote reveal">
+      <svg width="54" height="54" viewBox="0 0 24 24" fill="#123a2b" aria-hidden="true"><path d="M4 12c0-4 2-7 6-8v3c-2 1-3 3-3 5h3v7H4Zm10 0c0-4 2-7 6-8v3c-2 1-3 3-3 5h3v7h-6Z"/></svg>
+      <p>Good packaging protects the product. Great packaging protects the planet too.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / REGION -->
+<section id="about" class="region">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow">About Vplus</span>
+      <h2 style="font-size:clamp(2rem,4vw,3rem);margin:.6rem 0 1rem">Rwandan manufacturing, regional reach.</h2>
+      <p style="color:var(--ink-2);font-size:1.06rem;margin-bottom:1rem">Vplus Packaging Ltd is a Kigali-based manufacturer of corrugated paper cartons, operating from the Kigali Special Economic Zone. We help local and regional businesses replace imported packaging with quality cartons made right here in Rwanda – shorter lead times, lower logistics costs and support for Made in Rwanda.</p>
+      <p style="color:var(--ink-2);font-size:1.06rem">From our factory in Kigali we supply customers across Rwanda and the wider East African region.</p>
+      <div class="country-list">
+        <div class="home"><i class="pin"></i>Rwanda</div>
+        <div><i class="pin"></i>Burundi</div>
+        <div><i class="pin"></i>DR Congo</div>
+        <div><i class="pin"></i>Uganda</div>
+        <div><i class="pin"></i>Tanzania</div>
+        <div><i class="pin"></i>South Sudan</div>
+      </div>
+      <!-- [CONFIRM] adjust the country list to the markets you actually serve -->
+    </div>
+    <div class="split-visual reveal" aria-hidden="true">
+      <svg viewBox="0 0 400 320" style="position:absolute;inset:0;width:100%;height:100%">
+        <rect width="400" height="320" fill="#f6efe6"/>
+        <g fill="#e3d8ca">
+          <circle cx="90" cy="70" r="40"/><circle cx="320" cy="250" r="55"/>
+        </g>
+        <!-- routes -->
+        <g stroke="#c8996b" stroke-width="2.5" fill="none" stroke-dasharray="6 6">
+          <path d="M200 160Q150 100 110 90"/><path d="M200 160Q260 110 300 80"/>
+          <path d="M200 160Q130 200 80 230"/><path d="M200 160Q250 230 300 250"/>
+          <path d="M200 160Q190 230 170 280"/><path d="M200 160Q220 60 200 40"/>
+        </g>
+        <g font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="#1d2a24">
+          <circle cx="110" cy="90" r="7" fill="#1f5a43"/><text x="58" y="78">DR Congo</text>
+          <circle cx="300" cy="80" r="7" fill="#1f5a43"/><text x="282" y="66">Uganda</text>
+          <circle cx="80" cy="230" r="7" fill="#1f5a43"/><text x="46" y="254">Burundi</text>
+          <circle cx="300" cy="250" r="7" fill="#1f5a43"/><text x="275" y="274">Tanzania</text>
+          <circle cx="170" cy="280" r="7" fill="#1f5a43"/><text x="140" y="304">& beyond</text>
+          <circle cx="200" cy="40" r="7" fill="#1f5a43"/><text x="160" y="26">South Sudan</text>
+        </g>
+        <circle cx="200" cy="160" r="34" fill="#1f5a43" opacity=".15"><animate attributeName="r" values="24;44;24" dur="3s" repeatCount="indefinite"/></circle>
+        <circle cx="200" cy="160" r="18" fill="#1f5a43"/>
+        <text x="200" y="210" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="18" fill="#123a2b">Kigali</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <span class="eyebrow">Contact us</span>
+      <h2 style="font-size:clamp(2rem,4vw,3rem);margin:.6rem 0 1rem">Let's build your box.</h2>
+      <p style="color:var(--ink-2);font-size:1.06rem;margin-bottom:1.4rem">Send us your requirements and our team will get back to you with a recommendation and a quotation.</p>
+      <div class="info-item"><div class="ic">📍</div><div><b>Factory &amp; office</b><span>Kigali Special Economic Zone, Gasabo District<br>Kigali, Rwanda <!-- [CONFIRM] plot number / street --></span></div></div>
+      <div class="info-item"><div class="ic">☎</div><div><b>Phone / WhatsApp</b><span>+250 7XX XXX XXX <!-- [CONFIRM] --></span></div></div>
+      <div class="info-item"><div class="ic">✉</div><div><b>Email</b><span><a href="mailto:info@vpluspackagingrwanda.com">info@vpluspackagingrwanda.com</a> <!-- [CONFIRM] --></span></div></div>
+      <div class="info-item"><div class="ic">🕘</div><div><b>Working hours</b><span>Monday – Friday: 8:00 – 17:00<br>Saturday: 8:00 – 13:00 <!-- [CONFIRM] --></span></div></div>
+    </div>
+
+    <form class="reveal" id="quote">
+      <h3>Request a quote</h3>
+      <p>Takes less than a minute. We usually reply within one business day.</p>
+      <div class="row">
+        <div class="field"><label for="n">Full name</label><input id="n" name="name" required></div>
+        <div class="field"><label for="c">Company</label><input id="c" name="company"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="e">Email</label><input id="e" name="email" type="email" required></div>
+        <div class="field"><label for="p">Phone</label><input id="p" name="phone" type="tel"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="t">Product type</label>
+          <select id="t" name="type">
+            <option>Regular slotted carton</option><option>Printed / branded box</option><option>Die-cut box or tray</option><option>Partitions &amp; inserts</option><option>Heavy-duty carton</option><option>Sheets / rolls</option><option>Not sure – advise me</option>
+          </select></div>
+        <div class="field"><label for="q">Quantity</label><input id="q" name="qty" placeholder="e.g. 5,000 boxes"></div>
+      </div>
+      <div class="field"><label for="m">Details</label><textarea id="m" name="msg" placeholder="Box size (L × W × H), product weight, printing, delivery location…"></textarea></div>
+      <button class="btn btn-primary" type="submit">Send request <span class="arr">→</span></button>
+      <p class="form-note">Submitting opens your email app with the details filled in.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#top" class="logo" style="margin-bottom:18px">
+          <svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 42 13v22L24 44 6 35V13Z" fill="#1f5a43"/><path d="M24 4 42 13 24 22 6 13Z" fill="#c8996b"/><path d="M15 24l9 13 9-13" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M35 21v6M32 24h6" stroke="#e9d6bf" stroke-width="2.4" stroke-linecap="round"/></svg>
+          <span><b>Vplus</b><small>Packaging Ltd</small></span>
+        </a>
+        <p style="max-width:320px">Corrugated cartons and custom packaging, proudly made in Kigali for Rwanda and East Africa.</p>
+      </div>
+      <div><h4>Products</h4><ul><li><a href="#products">Slotted cartons</a></li><li><a href="#products">Printed boxes</a></li><li><a href="#products">Die-cut &amp; trays</a></li><li><a href="#products">Heavy-duty</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#about">About us</a></li><li><a href="#sustainability">Sustainability</a></li><li><a href="#process">How we work</a></li><li><a href="#contact">Careers</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li>Kigali Special Economic Zone</li><li>Kigali, Rwanda</li><li><a href="mailto:info@vpluspackagingrwanda.com">info@vpluspackagingrwanda.com</a></li><li>+250 7XX XXX XXX</li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>© <span id="yr"></span> Vplus Packaging Ltd. All rights reserved.</span><span>Made in Rwanda</span></div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 10), {passive:true});
+  const burger = document.getElementById('burger'), menu = document.getElementById('menu');
+  burger.onclick = () => { burger.classList.toggle('open'); menu.classList.toggle('open'); };
+  menu.querySelectorAll('a').forEach(a => a.onclick = () => { burger.classList.remove('open'); menu.classList.remove('open'); });
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i) => { el.style.transitionDelay = (i % 4) * 80 + 'ms'; io.observe(el); });
+  document.getElementById('quote').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = new FormData(e.target);
+    const body = `Name: ${f.get('name')}\nCompany: ${f.get('company')}\nEmail: ${f.get('email')}\nPhone: ${f.get('phone')}\nProduct: ${f.get('type')}\nQuantity: ${f.get('qty')}\n\n${f.get('msg')}`;
+    location.href = 'mailto:info@vpluspackagingrwanda.com?subject=' + encodeURIComponent('Quote request – ' + (f.get('company') || f.get('name'))) + '&body=' + encodeURIComponent(body);
+  });
+</script>
+</body>
+</html>
