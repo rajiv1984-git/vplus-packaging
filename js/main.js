@@ -1,8 +1,8 @@
 // V-Plus Packaging Industries Ltd — site script
 // ---- Settings ----
 const FOUNDED = new Date(2014, 9, 1);              // 1 October 2014 (months count from 0)
-const QUOTE_TO = 'info@vpluspackagingrwanda.com';  // quote requests are emailed here automatically
-const QUOTE_CC = 'sales@vpluspackagingrwanda.com'; // ...with a copy (CC) to this address
+const QUOTE_TO = 'aaravgarglko@gmail.com';         // quote requests are emailed here automatically (FormSubmit-activated)
+const QUOTE_CC = 'info@vpluspackagingrwanda.com,sales@vpluspackagingrwanda.com'; // ...with copies (CC) to these
 const QUOTE_FALLBACK = 'info@vpluspackagingrwanda.com';
 // Web3Forms access key (free, from https://web3forms.com – the key is linked to the email above).
 // When set, every quote is sent through Web3Forms AND FormSubmit, so one service failing never loses a quote.
