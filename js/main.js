@@ -5,13 +5,15 @@ document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date
 
 // Sticky header shadow
 const nav = document.getElementById('nav');
-addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 10), { passive: true });
+const onScroll = () => nav.classList.toggle('scrolled', scrollY > 40);
+addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
 // Mobile menu
 const burger = document.getElementById('burger'), menu = document.getElementById('menu');
 burger.addEventListener('click', () => {
   const open = menu.classList.toggle('open');
   burger.classList.toggle('open', open);
+  nav.classList.toggle('open', open);
   burger.setAttribute('aria-expanded', open);
 });
 
