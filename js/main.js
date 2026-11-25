@@ -1,5 +1,17 @@
 // V-Plus Packaging Industries Ltd — site script
-const QUOTE_EMAIL = 'info@vpluspackagingrwanda.com'; // where quote requests are sent
+// ---- Settings ----
+const FOUNDED = new Date(2014, 9, 1);              // 1 October 2014 (months count from 0)
+const QUOTE_TO = 'aaravgarglko@gmail.com';         // quote requests are emailed here automatically
+const QUOTE_FALLBACK = 'info@vpluspackagingrwanda.com';
+
+// Years in business = today − 1 October 2014 (full years completed)
+const now = new Date();
+let years = now.getFullYear() - FOUNDED.getFullYear();
+if (now.getMonth() < FOUNDED.getMonth() || (now.getMonth() === FOUNDED.getMonth() && now.getDate() < FOUNDED.getDate())) years--;
+document.querySelectorAll('[data-years]').forEach(el => {
+  if (el.hasAttribute('data-count')) el.dataset.count = years;
+  el.textContent = years;
+});
 
 document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
 
@@ -42,13 +54,42 @@ const cio = new IntersectionObserver(entries => entries.forEach(e => {
 }), { threshold: .5 });
 document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
 
-// Quote form -> opens the visitor's email app
+// Quote form -> emailed automatically to QUOTE_TO (via FormSubmit.co, no server needed)
 const form = document.getElementById('quote');
-if (form) form.addEventListener('submit', e => {
+if (form) form.addEventListener('submit', async e => {
   e.preventDefault();
+  const status = document.getElementById('form-status');
+  const btn = form.querySelector('button[type=submit]');
+  const show = (msg, ok) => { status.textContent = msg; status.className = 'form-status ' + (ok ? 'ok' : 'err'); };
+
+  if (!form.checkValidity()) { form.reportValidity(); return; }
   const f = new FormData(form);
-  const body = `Name: ${f.get('name')}\nCompany: ${f.get('company')}\nEmail: ${f.get('email')}\nPhone: ${f.get('phone')}\nProduct: ${f.get('type')}\nQuantity: ${f.get('qty')}\n\n${f.get('msg')}`;
-  location.href = `mailto:${QUOTE_EMAIL}?subject=${encodeURIComponent('Quote request – ' + (f.get('company') || f.get('name')))}&body=${encodeURIComponent(body)}`;
+  if (f.get('_honey')) return; // spam bot
+
+  const data = {
+    'Name': f.get('name'), 'Company': f.get('company'), 'Email': f.get('email'), 'Phone': f.get('phone'),
+    'Product': f.get('type'), 'Quantity': f.get('qty'), 'Details': f.get('msg'),
+    _subject: `New quote request – ${f.get('company') || f.get('name')}`,
+    _replyto: f.get('email'),
+    _template: 'table',
+  };
+
+  btn.disabled = true; btn.textContent = 'Sending…'; show('', true);
+  try {
+    const res = await fetch(`https://formsubmit.co/ajax/${QUOTE_TO}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok || String(out.success) !== 'true') throw new Error(out.message || res.status);
+    form.reset();
+    show('Thank you! Your quote request has been sent. Our team will contact you within one business day.', true);
+  } catch (err) {
+    show(`Sorry, your request could not be sent. Please email us at ${QUOTE_FALLBACK} or call +250 795 308 530.`, false);
+  } finally {
+    btn.disabled = false; btn.textContent = 'Send Request';
+  }
 });
 
 // Map loads only when the visitor asks (no Google connection by default)
