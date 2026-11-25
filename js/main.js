@@ -1,7 +1,8 @@
 // V-Plus Packaging Industries Ltd — site script
 // ---- Settings ----
 const FOUNDED = new Date(2014, 9, 1);              // 1 October 2014 (months count from 0)
-const QUOTE_TO = 'aaravgarglko@gmail.com';         // quote requests are emailed here automatically
+const QUOTE_TO = 'info@vpluspackagingrwanda.com';  // quote requests are emailed here automatically
+const QUOTE_CC = 'sales@vpluspackagingrwanda.com'; // ...with a copy (CC) to this address
 const QUOTE_FALLBACK = 'info@vpluspackagingrwanda.com';
 // Web3Forms access key (free, from https://web3forms.com – the key is linked to the email above).
 // When set, every quote is sent through Web3Forms AND FormSubmit, so one service failing never loses a quote.
@@ -69,11 +70,17 @@ if (form) form.addEventListener('submit', async e => {
   const f = new FormData(form);
   if (f.get('_honey')) return; // spam bot
 
+  const country = f.get('country_code') || '';                      // e.g. "Rwanda (+250)"
+  const dial = (country.match(/\+\d+/) || [''])[0];
+  const number = (f.get('phone') || '').trim().replace(/^0+/, '');  // drop leading 0 of local numbers
   const data = {
-    'Name': f.get('name'), 'Company': f.get('company'), 'Email': f.get('email'), 'Phone': f.get('phone'),
+    'Name': f.get('name'), 'Company': f.get('company'), 'Email': f.get('email'),
+    'Country': country.replace(/\s*\(\+\d+\)/, ''), 'Country code': dial,
+    'Phone': number ? `${dial} ${number}` : '',
     'Product': f.get('type'), 'Quantity': f.get('qty'), 'Details': f.get('msg'),
     _subject: `New quote request – ${f.get('company') || f.get('name')}`,
     _replyto: f.get('email'),
+    _cc: QUOTE_CC,
     _template: 'table',
   };
 
@@ -90,7 +97,7 @@ if (form) form.addEventListener('submit', async e => {
   };
   const sends = [post(`https://formsubmit.co/ajax/${QUOTE_TO}`, data)];
   if (WEB3FORMS_KEY) {
-    const { _subject, _replyto, _template, ...fields } = data;
+    const { _subject, _replyto, _template, _cc, ...fields } = data;
     sends.push(post('https://api.web3forms.com/submit', {
       access_key: WEB3FORMS_KEY, subject: _subject, from_name: 'V-Plus Website', replyto: _replyto, ...fields,
     }));
