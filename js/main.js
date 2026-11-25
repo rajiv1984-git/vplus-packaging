@@ -1,5 +1,5 @@
 // V-Plus Packaging Industries Ltd — site script
-const QUOTE_EMAIL = 'info@vpluspackaging.com'; // where quote requests are sent
+const QUOTE_EMAIL = 'info@vpluspackagingrwanda.com'; // where quote requests are sent
 
 document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
 
@@ -52,5 +52,5 @@ if (form) form.addEventListener('submit', e => {
 // Map loads only when the visitor asks (no Google connection by default)
 const mapBtn = document.getElementById('load-map');
 if (mapBtn) mapBtn.addEventListener('click', () => {
-  mapBtn.closest('.map').innerHTML = '<iframe title="V-Plus Packaging location" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=KG+411+St,+Kigali,+Rwanda&output=embed"></iframe>';
+  mapBtn.closest('.map').innerHTML = '<iframe title="V-Plus Packaging location" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Gahanga,+Kicukiro,+Kigali,+Rwanda&output=embed"></iframe>';
 });

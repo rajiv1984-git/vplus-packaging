@@ -200,6 +200,43 @@ footer .logo b{color:#fff}
 footer .logo small{color:#93a39a}
 .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.84rem}
 
+/* Product bullet lists + unit layout */
+.feat{list-style:none;display:grid;gap:8px;margin-top:4px;flex:1}
+.feat li{position:relative;padding-left:20px;font-size:.92rem;color:var(--ink-2)}
+.feat li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;border-radius:2px;background:var(--kraft)}
+.card .more{margin-top:18px;font-weight:600;font-size:.92rem;color:var(--kraft-l)}
+.card .more:hover{text-decoration:underline}
+.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.unit{padding:80px 0}
+.unit:nth-of-type(even){background:#fff}
+.unit:nth-of-type(even) .card{background:var(--kraft-xl)}
+.unit-head{display:flex;gap:26px;align-items:center;margin-bottom:40px}
+.unit-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+.unit-head p{color:var(--ink-2);margin-top:.3rem}
+.unit-no{flex:none;background:var(--green);color:#fff;font-family:Fraunces,serif;font-weight:700;border-radius:16px;padding:16px 20px;font-size:1.05rem}
+.unit-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.unit-nav a{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:grid;gap:4px;transition:transform .3s,box-shadow .3s,border-color .3s}
+.unit-nav a:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--green)}
+.unit-nav span{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+.unit-nav b{font-family:Fraunces,serif;font-size:1.35rem}
+.unit-nav small{color:var(--ink-2)}
+/* Leadership */
+.md{display:flex;gap:34px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:26px;padding:36px}
+.md h3{font-size:1.8rem;margin:.3rem 0 .7rem}
+.md p{color:var(--ink-2)}
+.avatar{flex:none;width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--green-d));color:var(--kraft-l);display:grid;place-items:center;font-family:Fraunces,serif;font-weight:700;font-size:2.2rem}
+.avatar.sm{width:58px;height:58px;font-size:1.1rem}
+.person{display:flex;gap:16px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.person b{display:block}
+.person span{color:var(--ink-2);font-size:.9rem}
+/* Legal facts */
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff}
+.facts div{padding:22px 24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.facts dt{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:6px}
+.facts dd{font-weight:500}
+@media (max-width:980px){.grid-5{grid-template-columns:1fr 1fr}.unit-nav,.facts{grid-template-columns:1fr 1fr}.md{flex-direction:column;align-items:flex-start}}
+@media (max-width:620px){.grid-5,.unit-nav,.facts{grid-template-columns:1fr}.unit-head{flex-direction:column;align-items:flex-start;gap:14px}}
+
 /* Reveal on scroll */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
 .reveal.in{opacity:1;transform:none}
