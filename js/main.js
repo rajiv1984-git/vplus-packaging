@@ -107,7 +107,9 @@ if (form) form.addEventListener('submit', async e => {
     form.reset();
     show('Thank you! Your quote request has been sent. Our team will contact you within one business day.', true);
   } catch (err) {
-    show(`Sorry, your request could not be sent. Please email us at ${QUOTE_FALLBACK} or call +250 795 308 530.`, false);
+    const reason = (err && err.errors ? err.errors.map(x => x.message) : [err && err.message]).filter(Boolean).join(' / ');
+    console.error('Quote form error:', reason);
+    show(`Sorry, your request could not be sent. Please email us at ${QUOTE_FALLBACK} or call +250 795 308 530.` + (reason ? ` (Reason: ${reason})` : ''), false);
   } finally {
     btn.disabled = false; btn.textContent = 'Send Request';
   }
