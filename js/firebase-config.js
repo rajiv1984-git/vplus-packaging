@@ -7,12 +7,12 @@
 // ===================================================================
 
 export const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: "",
+  apiKey: "AIzaSyAFCSdt6Y1FJOFtieNJ6dpO5IFhGoqtReM",
+  authDomain: "vplus-website.firebaseapp.com",
+  projectId: "vplus-website",
+  storageBucket: "vplus-website.firebasestorage.app",
+  messagingSenderId: "1028284718827",
+  appId: "1:1028284718827:web:2282ecd223a713b8fc68ae",
 };
 
 export const STAFF_EMAILS = [

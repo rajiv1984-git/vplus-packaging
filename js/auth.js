@@ -1,5 +1,5 @@
 // V-Plus website – accounts (Firebase Authentication + Cloud Firestore)
-import { firebaseConfig, STAFF_EMAILS } from './firebase-config.js';
+import { firebaseConfig, STAFF_EMAILS } from './firebase-config.js?v=1795804418';
 
 const SDK = 'https://www.gstatic.com/firebasejs/11.0.2';
 const page = document.body.dataset.page || '';
