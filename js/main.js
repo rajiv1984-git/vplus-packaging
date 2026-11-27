@@ -96,6 +96,8 @@ if (form) form.addEventListener('submit', async e => {
     return out;
   };
   const sends = [post(`https://formsubmit.co/ajax/${QUOTE_TO}`, data)];
+  // Also store the quote in the database for the Staff Dashboard (set up in js/auth.js once Firebase is configured)
+  if (typeof window.vplusSaveQuote === 'function') sends.push(window.vplusSaveQuote(data));
   if (WEB3FORMS_KEY) {
     const { _subject, _replyto, _template, _cc, ...fields } = data;
     sends.push(post('https://api.web3forms.com/submit', {
