@@ -1,9 +1,5 @@
 // ===================================================================
 //  V-Plus website – Firebase settings
-//  1. Paste your Firebase web app config below (Firebase console →
-//     Project settings → General → Your apps → Web app → "Config").
-//  2. List the staff email addresses that may open the Staff dashboard.
-//     Keep this list the same as the one in firestore.rules.
 // ===================================================================
 
 export const firebaseConfig = {
@@ -15,8 +11,9 @@ export const firebaseConfig = {
   appId: "1:1028284718827:web:2282ecd223a713b8fc68ae",
 };
 
-export const STAFF_EMAILS = [
-  "rajiv@vpluspackagingrwanda.com",
-  "info@vpluspackagingrwanda.com",
-  "sales@vpluspackagingrwanda.com",
-];
+// Staff, Admin and Super Admin accounts log in with a username (e.g. "admin.aarav").
+// Behind the scenes Firebase stores it as  username@USERNAME_DOMAIN.
+export const USERNAME_DOMAIN = "accounts.vplus-website.firebaseapp.com";
+
+// The one and only Super Admin account (its Firebase user UID). Must match superUid() in firestore.rules.
+export const SUPER_UID = "";

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard – V-Plus Packaging Industries Limited</title>
+<meta name="description" content="V-Plus team dashboard."><meta name="robots" content="noindex">
+<meta property="og:title" content="Dashboard – V-Plus Packaging Industries Limited">
+<meta property="og:description" content="V-Plus team dashboard.">
+<meta property="og:image" content="images/hero-factory.jpg">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=1795854704">
+</head>
+<body data-page="dashboard" class="solid-nav">
+<header class="nav" id="nav"><div class="wrap">
+  <a href="index.html" class="logo" aria-label="V-Plus Packaging Industries home"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 42 13v22L24 44 6 35V13Z" fill="#d94948"/><path d="M24 4 42 13 24 22 6 13Z" fill="#ffffff" opacity=".9"/><path d="M15 24l9 13 9-13" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>V-PLUS</b><small>Packaging Industries</small></span></a>
+  <ul class="menu" id="menu"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products.html">Products</a></li><li><a href="projects.html">Projects</a></li><li><a href="login.html" id="nav-auth">Login</a></li><li><a href="contact.html" class="btn">Contact</a></li></ul>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+</div></header>
+<main>
+
+<section class="dash-sec">
+  <p class="auth-notice" data-auth-notice hidden></p>
+  <p class="empty wrap" id="dash-loading">Loading your dashboard…</p>
+  <div class="dash" id="dash" hidden>
+    <aside class="dash-side">
+      <div class="me"><div class="avatar" id="me-avatar"></div><div><b id="me-name"></b><small id="me-user"></small><span id="me-role" class="role-badge"></span></div></div>
+      <nav class="dash-nav">
+        <button type="button" data-tab="overview">Overview</button>
+        <button type="button" data-tab="quotes">Quotes <em id="nav-new"></em></button>
+        <button type="button" data-tab="team" data-need="manageTeam">Team</button>
+        <button type="button" data-tab="customers" data-need="customers">Customers</button>
+        <button type="button" data-tab="settings" data-need="settings">Login Settings</button>
+        <button type="button" data-tab="activity" data-need="activity">Activity Log</button>
+        <button type="button" data-tab="profile">My Profile</button>
+      </nav>
+      <button type="button" class="logout" id="logout">Log Out</button>
+    </aside>
+
+    <div class="dash-main">
+      <!-- OVERVIEW -->
+      <section class="panel-tab" id="tab-overview">
+        <div class="dash-head"><div><span class="eyebrow">Dashboard</span><h2 id="ov-hello">Welcome</h2></div><button class="btn btn-ghost-dark" id="q-refresh" type="button">↻ Refresh</button></div>
+        <div class="stat-cards" id="ov-cards"></div>
+        <div class="ov-grid">
+          <div class="panel"><h3>Quotes per month</h3><div class="chart" id="ov-chart"></div></div>
+          <div class="panel"><h3>Most requested products</h3><ul class="top-list" id="ov-products"></ul></div>
+        </div>
+        <div class="panel"><h3>Latest quote requests</h3><div id="ov-recent"></div></div>
+      </section>
+
+      <!-- QUOTES -->
+      <section class="panel-tab" id="tab-quotes" hidden>
+        <div class="dash-head"><div><span class="eyebrow">Quotes</span><h2>All quote requests</h2></div><button class="btn btn-ghost-dark" id="q-export" type="button" data-need="export">⬇ Export CSV</button></div>
+        <div class="chips" id="q-counts"></div>
+        <div class="toolbar">
+          <input id="q-search" type="search" placeholder="Search name, company, email, product…">
+          <select id="q-assigned"><option value="all">Everyone's quotes</option><option value="me">Assigned to me</option><option value="none">Not assigned</option></select>
+          <select id="q-filter"><option value="all">All statuses</option><option value="new">New</option><option value="contacted">Contacted</option><option value="quoted">Quoted</option><option value="won">Won</option><option value="lost">Lost</option></select>
+        </div>
+        <div class="table-wrap"><table class="q-table clickable"><thead><tr><th>Received</th><th>Customer</th><th>Contact</th><th>Request</th><th>Assigned</th><th>Status</th></tr></thead><tbody id="q-body"><tr><td colspan="6" class="empty">Loading…</td></tr></tbody></table></div>
+      </section>
+
+      <!-- TEAM -->
+      <section class="panel-tab" id="tab-team" hidden>
+        <div class="dash-head"><div><span class="eyebrow">Team</span><h2>Admins &amp; Staff</h2><p class="muted" id="t-count"></p></div></div>
+        <form class="panel create-form" id="t-form" autocomplete="off">
+          <h3>Create a team account</h3>
+          <div class="frow4">
+            <div class="field"><label for="tn">Full name</label><input id="tn" name="name" required></div>
+            <div class="field"><label for="tu">Username</label><input id="tu" name="username" required autocapitalize="none" spellcheck="false" placeholder="e.g. john.k"></div>
+            <div class="field"><label for="tp">Temporary password</label><input id="tp" name="password" type="text" minlength="8" required autocomplete="off"></div>
+            <div class="field"><label for="tr">Account type</label><select id="t-role" name="role"><option value="staff">Staff</option><option value="admin">Admin</option></select></div>
+          </div>
+          <button class="btn" type="submit">Create account</button>
+          <p class="hint">Give the username and temporary password to the person. They can change the password in <b>My Profile</b> after logging in.</p>
+          <p class="form-status" id="t-status" role="status" aria-live="polite"></p>
+        </form>
+        <div class="table-wrap"><table class="q-table"><thead><tr><th>Name</th><th>Role</th><th>Status</th><th>Created by</th><th>Last login</th><th>Actions</th></tr></thead><tbody id="t-body"></tbody></table></div>
+      </section>
+
+      <!-- CUSTOMERS -->
+      <section class="panel-tab" id="tab-customers" hidden>
+        <div class="dash-head"><div><span class="eyebrow">Customers</span><h2>Registered customers</h2><p class="muted" id="c-count"></p></div></div>
+        <div class="toolbar"><input id="c-search" type="search" placeholder="Search name, email, company, phone…"></div>
+        <div class="table-wrap"><table class="q-table"><thead><tr><th>Customer</th><th>Contact</th><th>Quotes</th><th>Joined</th><th>Status</th><th>Actions</th></tr></thead><tbody id="c-body"></tbody></table></div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="panel-tab" id="tab-settings" hidden>
+        <div class="dash-head"><div><span class="eyebrow">Super Admin</span><h2>Login settings</h2><p class="muted">Switch login systems on or off for the whole website. Changes apply immediately.</p></div></div>
+        <div class="panel" id="s-list"></div>
+        <p class="form-status" id="s-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <!-- ACTIVITY -->
+      <section class="panel-tab" id="tab-activity" hidden>
+        <div class="dash-head"><div><span class="eyebrow">Super Admin</span><h2>Activity log</h2><p class="muted">Every login and change made by Admins and Staff.</p></div></div>
+        <div class="table-wrap"><table class="q-table"><thead><tr><th>When</th><th>Who</th><th>Action</th><th>Details</th></tr></thead><tbody id="a-body"></tbody></table></div>
+      </section>
+
+      <!-- PROFILE -->
+      <section class="panel-tab" id="tab-profile" hidden>
+        <div class="dash-head"><div><span class="eyebrow">My Profile</span><h2>Your account</h2><p class="muted">Logged in as <b id="pr-user"></b> · <span id="pr-role"></span></p></div></div>
+        <div class="ov-grid">
+          <form class="panel" id="pr-form"><h3>Display name</h3>
+            <div class="field"><label for="prn">Full name</label><input id="prn" name="name" required></div>
+            <button class="btn" type="submit">Save</button><p class="form-status" id="pr-status"></p></form>
+          <form class="panel" id="pw-form" autocomplete="off">
+        <h3>Change Password</h3>
+        <div class="field"><label for="cpw">Current password</label><input id="cpw" name="curpw" type="password" autocomplete="current-password" required></div>
+        <div class="frow">
+          <div class="field"><label for="npw">New password</label><input id="npw" name="newpw" type="password" minlength="8" autocomplete="new-password" required></div>
+          <div class="field"><label for="npw2">Repeat new password</label><input id="npw2" name="newpw2" type="password" minlength="8" autocomplete="new-password" required></div>
+        </div>
+        <button class="btn" type="submit">Change Password</button>
+        <p class="form-status" id="pw-status" role="status" aria-live="polite"></p>
+      </form>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="drawer-bg" id="drawer-bg" hidden></div>
+  <aside class="drawer" id="drawer" hidden aria-label="Quote details"><button type="button" class="drawer-close" id="drawer-close" aria-label="Close">×</button><div id="d-body"></div></aside>
+</section>
+</main>
+<footer><div class="wrap">
+  <div class="foot-grid">
+    <div>
+      <h5>V-Plus Packaging Industries Ltd</h5>
+      <p>A leading manufacturer of high-quality packaging solutions in Rwanda – corrugated, plastic, BOPP and flexible packaging.</p>
+    </div>
+    <div><h5>Contact Us</h5><ul><li>MD of V-Plus: Rajiv Garg</li><li>Email: <a href="mailto:info@vpluspackagingrwanda.com">info@vpluspackagingrwanda.com</a></li><li>Phone: <a href="tel:+250795308530">+250 795 308 530</a></li><li>Phone: <a href="tel:+250796166530">+250 796 166 530</a></li></ul></div>
+    <div><h5>Location / Hours</h5><ul><li>Gahanga, Kicukiro, Kigali, Rwanda</li><li>P.O. Box 1501, Kigali, Rwanda</li><li>Mon – Fri, 8:00 AM – 5:00 PM</li></ul></div>
+    <div><h5>Quick Links</h5><ul><li><a href="about.html">About</a></li><li><a href="products.html">Products</a></li><li><a href="projects.html">Projects</a></li><li><a href="contact.html">Contact</a></li><li><a href="login.html">Customer Login</a></li></ul></div>
+  </div>
+  <div class="foot-bottom"><span>Copyright © <span data-year></span> V-Plus Packaging Industries Limited · TIN 103430389</span><span>Made in Rwanda</span></div>
+</div></footer>
+<script src="js/main.js?v=1795854704"></script>
+<script type="module" src="js/auth.js?v=1795854704"></script>
+<script type="module" src="js/dashboard.js?v={ASSET_V}"></script>
+</body>
+</html>
